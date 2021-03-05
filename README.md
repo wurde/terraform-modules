@@ -2,7 +2,7 @@
 
 A set of components for agile backend development.
 
-## Modules
+## Components
 
 - [Terraform Backend S3](./terraform-backend-s3/README.md)
 
