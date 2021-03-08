@@ -10,42 +10,60 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-const bucketName = "andys-s3concat-1"
-const firstObject = "data-1.csv"
-const secondObject = "data-2.csv"
-const targetObject = "data.csv"
+var s3BucketName = os.Getenv("S3_BUCKET_NAME")
+var s3OutputPrefix = os.Getenv("S3_OUTPUT_PREFIX")
 
-func exitErrorf(msg string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, msg+"\n", args...)
-	os.Exit(1)
-}
-
-func main() {
+// func handleRequest(ctx context.Context) {
+func handleRequest() {
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String("us-east-1")},
 	)
 
 	svc := s3.New(sess)
 
-	// TODO Read the input S3 Object.
-	reader, err := svc.GetObject(bucketName, firstObject)
+	// Read the input S3 Object.
+	inputContent, err := svc.GetObject(&s3.GetObjectInput{
+		Bucket: aws.String(s3BucketName),
+		Key:    aws.String("data-1.csv"),
+	})
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer reader.Close()
+	fmt.Println(inputContent.Body)
 
-	// TODO Read the output S3 Object.
-	reader, err := svc.GetObject(bucketName, secondObject)
+	// Read the output S3 Object.
+	mainContent, err := svc.GetObject(&s3.GetObjectInput{
+		Bucket: aws.String(s3BucketName),
+		Key:    aws.String(s3OutputPrefix),
+	})
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer reader.Close()
+	fmt.Println(mainContent.Body)
 
-	// TODO concat input data to the output data.
+	// // Concat input data to the output data.
+	// lines := strings.Split(string(inputContent), "\n")
+	// var newContent string
+	// if len(lines) > 1 {
+	// 	newContent = strings.Join(lines[1:], "\n")
+	// } else {
+	// 	newContent = strings.Join(lines, "\n")
+	// }
+	// data := append(mainContent, newContent...)
+	// data = append(data, []byte("\n")...)
 
-	// TODO Write to the output S3 Object.
-	n, err := svc.PutObject(bucketName, targetObject, reader, "application/octet-stream")
-	if err != nil {
-		log.Fatalln(err)
-	}
+	// // Write to the output S3 Object.
+	// n, err := svc.PutObject(&s3.PutObjectInput{
+	// 	Bucket: aws.String(bucketName),
+	// 	Key:    aws.String(s3OutputPrefix),
+	// 	Body:   data,
+	// })
+	// if err != nil {
+	// 	log.Fatalln(err)
+	// }
+}
+
+func main() {
+	// lambda.Start(handleRequest)
+	handleRequest()
 }
