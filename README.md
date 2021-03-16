@@ -2,7 +2,7 @@
 
 A set of components for agile backend development.
 
-## Modules
+## Components
 
 - [S3 CSV Concat](./s3-csv-concat/README.md)
 - [Terraform Backend S3](./terraform-backend-s3/README.md)
