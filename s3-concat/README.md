@@ -1,4 +1,4 @@
-# S3 Concat
+# S3 Concat [IN PROGRESS]
 
 [<- Back](../README.md)
 
@@ -8,7 +8,7 @@ Automate the concatenation of files within S3.
 
 ```terraform
 module "s3-concat" "intraday-call-metrics" {
-  source = "github.com/wurde/terraform-modules/s3-concat"
+  source = "git::github.com/wurde/terraform-modules//s3-concat"
 
   s3_bucket_name   = "amazon-connect-reports"
   s3_input_prefix  = "/connect/Reports/IntradayCallMetrics"

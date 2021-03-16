@@ -1,11 +1,6 @@
 # Define S3 resources.
 # https://aws.amazon.com/s3
 
-# https://www.terraform.io/docs/providers/aws/d/iam_role.html
-data "aws_iam_role" "main" {
-  name = var.role_name
-}
-
 # https://www.terraform.io/docs/providers/aws/r/s3_bucket.html
 resource "aws_s3_bucket" "main" {
   # The name of the bucket.
@@ -62,19 +57,19 @@ resource "aws_s3_bucket_policy" "domain_policy" {
 
   policy = <<POLICY
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-              "AWS": "${data.aws_iam_role.main.arn}"
-            },
-            "Action": [ "s3:*" ],
-            "Resource": [
-                "arn:aws:s3:::${var.bucket_name}/*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::${var.bucket_name}"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::${var.bucket_name}/*"
+    }
+  ]
 }
 POLICY
 }
