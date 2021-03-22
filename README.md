@@ -4,6 +4,7 @@ A set of components for agile backend development.
 
 ## Components
 
+- [Budget](./budget/README.md)
 - [Terraform Backend S3](./terraform-backend-s3/README.md)
 
 ## License
