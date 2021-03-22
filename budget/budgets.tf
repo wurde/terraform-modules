@@ -1,5 +1,8 @@
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget
 resource "aws_budgets_budget" "main" {
+  # The name of a budget. Unique within accounts.
+  name = var.name
+
   # (Required) What this budget tracks.
   #   USAGE | COST | RI_UTILIZATION | RI_COVERAGE |
   #   SAVINGS_PLANS_UTILIZATION | SAVINGS_PLANS_COVERAGE

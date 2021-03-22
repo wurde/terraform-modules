@@ -1,3 +1,9 @@
+variable "name" {
+  type        = string
+  default     = "main-budget"
+  description = "The name of a budget. Unique within accounts."
+}
+
 variable "budget_type" {
   type        = string
   default     = "COST"
