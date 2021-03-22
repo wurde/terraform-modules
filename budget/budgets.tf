@@ -1,3 +1,4 @@
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget
 resource "aws_budgets_budget" "main" {
   # (Required) What this budget tracks.
   #   USAGE | COST | RI_UTILIZATION | RI_COVERAGE |

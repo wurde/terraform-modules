@@ -12,7 +12,7 @@ variable "limit_amount" {
 
 variable "time_period_start" {
   type        = string
-  default     = "2021-01-01"
+  default     = "2021-01-01_00:00"
   description = "The start of the time period covered by the budget."
 }
 
