@@ -7,7 +7,7 @@ An AWS Budget.
 ## Example
 
 ```terraform
-module "budget" "main" {
+module "budget" {
   source = "git::github.com/wurde/terraform-modules//budget"
 
   budget_type   = "COST"
