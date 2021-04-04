@@ -2,7 +2,7 @@
 
 [<- Back](../README.md)
 
-An GitHub Repository.
+A GitHub repository.
 
 ## Example
 
@@ -10,10 +10,46 @@ An GitHub Repository.
 module "repo" {
   source = "git::github.com/wurde/terraform-modules//github-repo"
 
-  name = "example"
-
-  visibility = "public"
+  name        = "example"
+  description = "My example repo."
+  visibility  = "private"
 }
+```
+
+Provider configuration:
+
+```terraform
+// ./terraform.tf
+terraform {
+  required_version = "~> 0.14"
+
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.6"
+    }
+  }
+}
+
+// ./providers.tf
+provider "github" {
+  token = var.github_token
+  owner = var.github_owner
+}
+
+// ./variables.tf
+variable "github_token" {
+  type        = string
+  description = "A GitHub OAuth / Personal Access Token."
+}
+
+variable "github_owner" {
+  type        = string
+  description = "This is the target GitHub individual account to manage."
+}
+
+// ./terraform.tfvars
+
 ```
 
 ## Resources
