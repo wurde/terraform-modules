@@ -49,7 +49,8 @@ variable "github_owner" {
 }
 
 // ./terraform.tfvars
-
+github_token = "ghp_05f60ba25a20f67f442f4127e4d6c4dd"
+github_owner = "wurde"
 ```
 
 ## Resources
