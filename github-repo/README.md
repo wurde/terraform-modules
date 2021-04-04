@@ -80,3 +80,8 @@ github_owner = "wurde"
 | :--  | :--         | :--  | :--     |
 | description | A description of the repository. | string | "" |
 | visibility | Can be public or private. | string | "public" |
+| has_issues | Enable the GitHub Issues feature. | bool | false |
+| is_template | This is a template repository. | bool | false |
+| delete_branch_on_merge | Automatically delete head branch after a pull request is merged. | bool | true |
+|
+|
