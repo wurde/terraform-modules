@@ -65,3 +65,18 @@ github_owner = "wurde"
 - github_actions_secret
 - github_repository_webhook
 - github_issue_label
+
+## Variables
+
+**Required**
+
+| Name | Description | Type |
+| :--  | :--         | :--  |
+| name | The name of the repository. | string
+
+**Optional**
+
+| Name | Description | Type | Default |
+| :--  | :--         | :--  | :--     |
+| description | A description of the repository. | string | "" |
+| visibility | Can be public or private. | string | "public" |
