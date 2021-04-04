@@ -41,11 +41,11 @@ variable "gitignore_template" {
 variable "license_template" {
   type        = string
   description = "Automatically add a LICENSE file. Template name without extension: https://github.com/github/choosealicense.com/tree/gh-pages/_licenses"
-  default     = "MIT"
+  default     = "mit"
 }
 
 variable "topics" {
   type        = list(string)
-  description = "The list of topics."
+  description = "List of topics."
   default     = []
 }

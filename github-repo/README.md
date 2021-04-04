@@ -83,5 +83,6 @@ github_owner = "wurde"
 | has_issues | Enable the GitHub Issues feature. | bool | false |
 | is_template | This is a template repository. | bool | false |
 | delete_branch_on_merge | Automatically delete head branch after a pull request is merged. | bool | true |
-|
-|
+| gitignore_template | Automatically add a .gitignore file. Template name without extension: https://github.com/github/gitignore | string | "Terraform" |
+| license_template | Automatically add a LICENSE file. Template name without extension: https://github.com/github/choosealicense.com/tree/gh-pages/_licenses | string | mit |
+| topics | List of topics. | list(string) | [] |
